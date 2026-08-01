@@ -1,1 +1,40 @@
 /* You can add global styles to this file, and also import other style files */
+/* Responsive Global Base */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: #f4f6f9;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Modal and Input Touch Optimization */
+input, button, select {
+  font-size: 16px !important; /* Prevents auto-zoom on iOS Safari */
+}
+
+/* Table Responsive Scrolling Container */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Mobile Media Queries */
+@media (max-width: 600px) {
+  .main-container {
+    padding: 0.5rem;
+  }
+
+  .action-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0.8rem !important;
+  }
+
+  .modal-content {
+    width: 95% !important;
+    padding: 1rem !important;
+  }
+}

@@ -1,0 +1,54 @@
+<div class="login-wrapper" style="display:flex; justify-content:center; align-items:center; min-height:100vh; background-color:#f0f2f5; font-family:sans-serif;">
+  <div class="login-card" style="background:#fff; padding:2rem; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.1); width:100%; max-width:400px; text-align:center;">
+    <div class="login-header" style="margin-bottom:1.5rem;">
+      <img [src]="logoSvg" alt="UNEFA Logo" style="width:80px; height:80px; margin-bottom:1rem;" />
+      <h2 style="color:#003366; margin:0 0 0.5rem 0; font-size:1.4rem;">UNEFA - Sistema de Nómina</h2>
+      <p style="color:#666; margin:0; font-size:0.9rem;">Área de Ingeniería | Coordinación Académica</p>
+    </div>
+
+    <form (ngSubmit)="onLogin()" #loginForm="ngForm">
+      <div style="text-align:left; margin-bottom:1rem;">
+        <label for="cedula" style="display:block; margin-bottom:0.3rem; font-weight:bold; font-size:0.85rem; color:#333;">Cédula de Identidad:</label>
+        <input
+          type="text"
+          id="cedula"
+          name="cedula"
+          [(ngModel)]="cedula"
+          placeholder="Ej: 00000000"
+          required
+          style="width:100%; padding:0.6rem; border:1px solid #ccc; border-radius:5px; box-sizing:border-box;"
+        />
+      </div>
+
+      <div style="text-align:left; margin-bottom:1.5rem;">
+        <label for="password" style="display:block; margin-bottom:0.3rem; font-weight:bold; font-size:0.85rem; color:#333;">Contraseña:</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          [(ngModel)]="password"
+          placeholder="••••••••"
+          required
+          style="width:100%; padding:0.6rem; border:1px solid #ccc; border-radius:5px; box-sizing:border-box;"
+        />
+      </div>
+
+      <div *ngIf="errorMessage" style="background-color:#f8d7da; color:#721c24; padding:0.6rem; border-radius:5px; margin-bottom:1rem; font-size:0.85rem;">
+        {{ errorMessage }}
+      </div>
+
+      <button
+        type="submit"
+        [disabled]="!loginForm.form.valid"
+        style="width:100%; padding:0.75rem; background-color:#003366; color:white; border:none; border-radius:5px; font-size:1rem; font-weight:bold; cursor:pointer;"
+      >
+        Iniciar Sesión
+      </button>
+
+      <div style="margin-top:1.5rem; padding-top:1rem; border-top:1px solid #eee; font-size:0.8rem; color:#555;">
+        <strong>Credenciales de Prueba:</strong><br />
+        Cédula: <code>00000000</code> | Pass: <code>Admin123*</code>
+      </div>
+    </form>
+  </div>
+</div>

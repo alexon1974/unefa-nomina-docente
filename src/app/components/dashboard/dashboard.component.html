@@ -1,0 +1,91 @@
+<!-- Replace your current <tbody> block inside dashboard.component.html with this -->
+<tbody>
+  <tr *ngFor="let docente of docentesList">
+    <td>
+      <input type="checkbox" [(ngModel)]="docente.selected" />
+    </td>
+    <td>
+      <input
+        class="table-cell-input"
+        [(ngModel)]="docente.cedula"
+        (change)="onCellEdit(docente)"
+        style="font-weight: bold;"
+      />
+    </td>
+    <td>
+      <input
+        class="table-cell-input"
+        [(ngModel)]="docente.apellidos"
+        (change)="onCellEdit(docente)"
+      />
+    </td>
+    <td>
+      <input
+        class="table-cell-input"
+        [(ngModel)]="docente.nombres"
+        (change)="onCellEdit(docente)"
+      />
+    </td>
+    <td>
+      <input
+        class="table-cell-input"
+        [(ngModel)]="docente.nucleo"
+        (change)="onCellEdit(docente)"
+      />
+    </td>
+    <td>
+      <input
+        class="table-cell-input"
+        [(ngModel)]="docente.extension"
+        (change)="onCellEdit(docente)"
+      />
+    </td>
+    <td>
+      <input
+        class="table-cell-input"
+        [(ngModel)]="docente.correo"
+        (change)="onCellEdit(docente)"
+      />
+    </td>
+    <td>
+      <input
+        class="table-cell-input"
+        [(ngModel)]="docente.telefono"
+        (change)="onCellEdit(docente)"
+      />
+    </td>
+    <td>
+      <input
+        class="table-cell-input"
+        [(ngModel)]="docente.condicion"
+        (change)="onCellEdit(docente)"
+      />
+    </td>
+    <td>
+      <input
+        class="table-cell-input"
+        [(ngModel)]="docente.dedicacion"
+        (change)="onCellEdit(docente)"
+      />
+    </td>
+    <td>
+      <input
+        class="table-cell-input"
+        [(ngModel)]="docente.categoria"
+        (change)="onCellEdit(docente)"
+      />
+    </td>
+    <td>
+      <input
+        class="table-cell-input"
+        [(ngModel)]="docente.asignaturas"
+        (change)="onCellEdit(docente)"
+      />
+    </td>
+    <td style="text-align: center;">
+      <button class="btn-borrar" style="padding: 0.2rem 0.5rem; font-size: 0.75rem;" (click)="deleteSingleDocente(docente.cedula)">
+        Eliminar
+      </button>
+    </td>
+  </tr>
+</tbody>
