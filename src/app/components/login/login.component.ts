@@ -9,43 +9,29 @@ import { AuthService } from '../../services/auth.service';
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './login.component.html',
-  styles: [`
-    .login-wrapper {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      background-color: #003366;
-      padding: 1rem;
-    }
-    .login-card {
-      background: white;
-      padding: 2rem;
-      border-radius: 8px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-      width: 100%;
-      max-width: 400px;
-      text-align: center;
-    }
-    .login-title { color: #003366; margin-bottom: 1.5rem; font-size: 1.4rem; font-weight: bold; }
-    .form-group { margin-bottom: 1rem; text-align: left; }
-    .form-group label { display: block; font-size: 0.85rem; margin-bottom: 0.3rem; font-weight: bold; }
-    .form-group input { width: 100%; padding: 0.6rem; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
-    .btn-login { width: 100%; padding: 0.75rem; background-color: #007bff; color: white; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; margin-top: 1rem; }
-    .btn-login:hover { background-color: #0056b3; }
-  `]
+  styleUrls: []
 })
 export class LoginComponent {
-  username = '';
-  password = '';
+  cedula: string = '';
+  password: string = '';
+  errorMessage: string = '';
+
+  // Embedded base64 SVG logo fallback so it renders without external file dependencies
+  logoSvg: string = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="%23003366"/><text x="50" y="58" font-size="22" text-anchor="middle" fill="white" font-weight="bold">UNEFA</text></svg>';
 
   constructor(private authService: AuthService, private router: Router) {}
 
   onLogin(): void {
-    if (this.authService.login(this.username, this.password)) {
+    this.errorMessage = '';
+    if (!this.cedula || !this.password) {
+      this.errorMessage = 'Por favor ingrese cédula y contraseña.';
+      return;
+    }
+
+    if (this.authService.login(this.cedula, this.password)) {
       this.router.navigate(['/dashboard']);
     } else {
-      alert('Credenciales incorrectas');
+      this.errorMessage = 'Cédula o contraseña incorrectos.';
     }
   }
 }
